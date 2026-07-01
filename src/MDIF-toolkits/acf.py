@@ -172,7 +172,6 @@ class ACF:
             locpres= self.u.coord.positions
             JJ=self._s1.indices
             rxo=locpres[JJ,0]
-            #print(self.cutoff_IF); input('exit')
             nr_water_in_if = np.where(rxo < self.cutoff_IF[1])
             nr_water_in_if = len(nr_water_in_if[0])
             nr_HBs_IF_t[n_frames_i-1] = nr_water_in_if * 2
@@ -185,9 +184,6 @@ class ACF:
             nr_water_in_ne = len(nr_water_in_ne[0])
             nr_HBs_NE_t[n_frames_i-1] = nr_water_in_ne * 2
 
-
-            h3o_activeHbond_hydrogen = []
-           
             """ search oxygens, which are closest hydrogen atoms  """
             self.Hatoms = self.u.select_atoms('name H')
             for h_tag in self.Hatoms:
@@ -364,16 +360,17 @@ class ACF:
         return hb_acf_results_IF, hb_acf_results_BULK, c_dot_if, c_dot_if_2
 
 
-    def _slice_trj(self, nruns):
-        print('n runs: ', nruns, 'window: ', window)
-        window_list = []; windows = 0
-        for i in range(nruns+1):
-           window_list.append(windows)
-           windows += window
-        print('window_list: ', window_list)
-        return window_list 
+#    def _slice_trj(self, nruns):
+#        print('n runs: ', nruns, 'window: ', window)
+#        window_list = []; windows = 0
+#        for i in range(nruns+1):
+#           window_list.append(windows)
+#           windows += window
+#        print('window_list: ', window_list)
+#        return window_list 
 
-    def _slice_trj_fixed_window10000(self):
+    #def _slice_trj_fixed_window10000(self):
+    def _slice_trj(self):
         #window = 10000
         #sampling_numbers = 10000
         sampling_numbers = 3
@@ -381,29 +378,21 @@ class ACF:
         tmp = int((self.stop - self.start) / self.step)
         nruns = np.ceil(tmp / sampling_numbers)
         print('nruns: ', nruns)#; input('enter')
-
-        #if tmp < window:
-            #raise ValueError('The total frame is less than the minimum window %s\n EXIT' %(min_window))
-        #else:
-             
-        #print('n runs: ', nruns, 'window: ', window)
+            
         window_list = []; windows = 0
         for i in range(int(nruns+1)):
            window_list.append(windows)
            windows += sampling_numbers
-        #print('window_list: ', window_list); input('enter')
-        #input('enter') 
         return window_list
 
     def run(self, **kwargs):
         step=1; 
-        #window_list = self._slice_trj(nruns)    # [start, ..., intermediates..., end]
-        window_list = self._slice_trj_fixed_window10000()
+        window_list = self._slice_trj(nruns)    # [start, ..., intermediates..., end]
+        #window_list = self._slice_trj_fixed_window10000()
         #window_list = [0, 4000, 8000, 12000]       # [start,stop-start,stop]
         nruns=len(window_list);print('nruns: ', nruns-1)#; input('enter')
 
         # Prepare
-        print(window_list)
         hb_acf_results_IF_global = np.zeros_like(np.arange(window_list[0], window_list[1], self.step), dtype=np.float32)
         hb_acf_results_IF_acf_global = np.zeros_like(np.arange(window_list[0], window_list[1], self.step), dtype=np.float32)
 
@@ -412,8 +401,6 @@ class ACF:
 
         c_dot_if_global = np.zeros_like(np.arange(window_list[0], window_list[1], self.step), dtype=np.float32)
         c_dot_if_2_global = np.zeros_like(np.arange(window_list[0], window_list[1], self.step), dtype=np.float32)
-
-        #print(np.shape(hb_acf_results_IF_global)); input('enter')
 
         # Average HB number at each starting point; Average of HB.
         hb_acf_results_IF_global = 0
