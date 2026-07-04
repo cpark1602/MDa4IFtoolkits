@@ -3,7 +3,7 @@ MDIF-toolkits is a analysis package for atomistic simulations with interfacial g
 
 # MDIF-toolkits
 
-[![CI](https://github.com/cpark1602/MDIF-toolkits/actions/workflows/ci.yml/badge.badge.svg)](https://github.com/cpark1602/MDIF-toolkits/actions)
+[![CI](https://github.com/cpark1602/MDIF-toolkits/actions/workflows/ci.yml/badge.svg)](https://github.com/cpark1602/MDIF-toolkits/actions)
 [![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
 A specialized scientific Python package designed to post-process, analyze, and extract structural and transport properties from Molecular Dynamics (MD) trajectories of complex electrified interfaces and slab geometries.
@@ -66,5 +66,14 @@ This project uses a modern CI/CD pipeline powered by GitHub Actions:
 
 To run tests locally on your machine, simply execute:
 
+
+
+---
+
+## Contributors & Contact
+
+    Developer: Chanbum Park (Sorbonne Université, CNRS)
+
+    GitHub Repository: cpark1602/MDIF-toolkits
 
 
