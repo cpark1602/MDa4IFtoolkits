@@ -255,8 +255,6 @@ kw_gk_mu_aver_global = if_q0_nac.run()
 ### Mean Squared Displacement
 This repository provides Python tools to compute the Mean Squared Displacement (MSD) of molecules from Molecular Dynamics (MD) trajectory data using both direct tracking and accelerated Fast Fourier Transform (FFT) methods.
 
----
-
 #### Theoretical Framework
 
 Mean Squared Displacement (MSD) is a standard statistical measure in physics and chemistry that quantifies how far a particle (or molecule) moves from its starting position over a given time interval ($t$). It tracks the spatial exploration of an object over time and serves as a fundamental metric to compute the self-diffusion coefficient ($D$) of fluids.
@@ -274,16 +272,12 @@ $$D = \lim_{t \to \infty} \frac{1}{2d \cdot t} \langle |\mathbf{r}_i(t) - \mathb
 
 Where $d$ represents the dimensionality of the system (typically $d = 3$ for standard bulk 3D diffusion).
 
----
-
 #### Repository Structure
 
 This repository features two distinct methods to compute the MSD curve from a trajectory:
 
 1. **`main_Analysis_msd.py`**: Utilizes the standard `MDAnalysis` framework to extract spatial coordinates and directly compute displacements frame-by-frame.
 2. **`msd_fft.py`**: Employs an accelerated **Fast Fourier Transform (FFT)** approach based on the Wiener-Khinchin theorem. This reduces the algorithmic complexity from a slow $O(N^2)$ direct window loop to an incredibly fast $O(N \log N)$ execution, ideal for long trajectories.
-
-
 
 #### Usage
 ```bash
