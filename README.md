@@ -178,6 +178,7 @@ dim='x'
 bin_size = 0.02
 selection1 = 'name O'; selection2 = 'name O'
 if_q0_nac = kirkwood_gk_interface.Kirkwood_Gk(u_if, box, print_results_path, pbc, bin_size, dim, selection1, selection2, cutoff_IF = [0, 12], cutoff_BULK = [19, 28], start=start_stop_step[0], stop=start_stop_step[1], step=start_stop_step[2])
+```
 
 ### Ionic conductivity
 
@@ -196,13 +197,10 @@ u_if_q0_nac = mda.Universe(os.path.join(w_path,trj_file_pdb), os.path.join(w_pat
 start_stop_step = [0, -1, 1] 
 if_q0_nac = conductivity.Conductivity(u_if_q0_nac, 'name '+atom1, 'name '+atom2, print_results_path, Ex, start=start_stop_step[0], stop=start_stop_step[1], step=start_stop_step[2])
 if_q0_nac.run()
-```
-
-# ----- Run analysis
 kw_gk_mu_aver_global = if_q0_nac.run()
 ```
 
-#### Mean Squared Displacement
+### Mean Squared Displacement
 
 #### Usage
 ```bash
