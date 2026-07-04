@@ -81,6 +81,17 @@ Analyzes the structural ordering and polarization of water molecules in proximit
 #### Usage
 
 ```bash
+import MDAnalysis as mda
+u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
+boxX = 48.57
+boxY = 15.667
+boxZ = 15.076
+box = [boxX, boxY, boxZ, 90, 90, 90]
+u_if.dimensions = box
+start_stop_step = [0, -1, 1]
+print_results_path = "/results/"
+
+
 u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
 boxX = 48.57
 boxY = 15.667
@@ -104,6 +115,25 @@ valdip_IF =  _u_if.run( start_stop_step[0], start_stop_step[1], start_stop_step[
 ### Hydrogen Bond Autocorrelation Function (ACF)
 Tracks the dynamic lifetime, breaking, and forming kinetics of hydrogen bond networks near a surface using structural time-correlation frameworks.
 
+#### Usage
+```bash
+import MDAnalysis as mda
+u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
+boxX = 48.57
+boxY = 15.667
+boxZ = 15.076
+box = [boxX, boxY, boxZ, 90, 90, 90]
+u_if.dimensions = box
+start_stop_step = [0, -1, 1]
+print_results_path = "/results/"
+
+import acf
+if_q0_nac = acf.ACF(u_if, box, HBs_criteria_input, 'name O', 'name O', print_results_path, cutoff_dist_O_H =3.5, cutoff_dist_donor_acceptor = 3.5, cutoff_IF = [0, 12], cutoff_BULK = [19, 28], angle=35.0, pbc=True, start=start_stop_step[0], stop=start_stop_step[1], step=start_stop_step[2], nac='IF') 
+
+# ----- Run analysis
+# if_q0_nac.run()
+```
+
 
 ### Ionic Conductivity
 Evaluates charge transport dynamics across the electrolyte layer by parsing collective ionic current fluctuations under bias potentials.
@@ -116,6 +146,7 @@ Calculates the translational diffusion coefficients of ionic species and solvent
 Computes a modified, spatially restricted g(r) function to evaluate pair correlation properties inside local thin-film slabs without bulk volume projection artifacts.
 
 ```bash
+import MDAnalysis as mda
 import rdf_slab
 IdentityA = "O"
 IdentityB = "O"
@@ -162,6 +193,7 @@ Where $\mathbf{M}_i(r)$ is the net total sum of all molecular dipoles $\mathbf{\
 #### Usage
 
 ```bash
+import MDAnalysis as mda
 u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
 boxX = 48.57
 boxY = 15.667
@@ -185,6 +217,7 @@ if_q0_nac = kirkwood_gk_interface.Kirkwood_Gk(u_if, box, print_results_path, pbc
 
 #### Usage
 ```bash
+import MDAnalysis as mda
 import conductivity
 
 pbc=True
@@ -204,6 +237,7 @@ kw_gk_mu_aver_global = if_q0_nac.run()
 
 #### Usage
 ```bash
+import MDAnalysis as mda
 import msd
 
 trj_file1 = "run-pos.pdb"
