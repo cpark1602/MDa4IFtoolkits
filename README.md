@@ -73,6 +73,9 @@ To run tests locally on your machine, simply execute:
 ## Contributors & Contact
 
     Developer: Chanbum Park (Sorbonne Université, CNRS)
+               chanbum.park@sorbonne-universite.fr
+               Chanbum.Park@ruhr-uni-bochum.de
+               Chanbum.Park@theochem.ruhr-uni-bochum.de
 
     GitHub Repository: cpark1602/MDIF-toolkits
 
