@@ -13,7 +13,7 @@ logger = logging.getLogger("MDAnalysis.analysis.hbonds")
 def test_mass_density_profile():
     #####----- Trj path -----
     w_path = "./tests/"
-    u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
+    u_if = mda.Universe(os.path.join(w_path,"run-pos.pdb"), os.path.join(w_path,"run-pos.dcd"))
     
     print("total nr. of frame: ", len(u_if.trajectory))
     tot_frames = len(u_if.trajectory)
