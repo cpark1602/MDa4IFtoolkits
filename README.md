@@ -34,6 +34,7 @@ The package contains targeted workflows optimized for spatial sorting and time-c
 
 Calculates the spatial mass distribution of different atomic species (e.g., water, ions) along a specific axis perpendicular to the slab geometry surface.
 
+![The mass density profiles across the Au/water/Ne simulation cell (source: doi.org/10.1103/7ht1-xv82).](./figs/density.png)
 
 #### Usage
 ```bash
