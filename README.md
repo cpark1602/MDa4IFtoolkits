@@ -77,7 +77,7 @@ his_edges, number_density_Ne = _u_if._get_densityProfile("Ne")
 ### Water Dipole Orientation Angles
 Analyzes the structural ordering and polarization of water molecules in proximity to electrified interfaces by measuring the distribution of dipole vector angles relative to the surface normal.
 
-![Snapshot of water dipole angle (source: doi.org/10.1103/7ht1-xv82).](./figs/water-dipole-angle.png)
+![Snapshot of the water dipole angle orientation (source: doi.org/10.1103/7ht1-xv82).](./figs/water-dipole-angle.png)
 
 #### Usage
 
