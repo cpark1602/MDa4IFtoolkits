@@ -1,8 +1,3 @@
-Here is your updated code featuring professional, production-grade **Docstrings** (Google Style) and clean **inline comments**.
-
-In addition to adding explanations, I fixed a few minor spelling typos in your log messages (e.g., `n_frableames` -> `n_frames`, `dornor` -> `donor`) so it looks completely clean on execution.
-
-```python
 #!/usr/bin/env python
 import os
 import time
@@ -593,5 +588,3 @@ class ACF:
         # Un-comment the lines below whenever writing data straight to disk files is needed:
         # np.save(self.print_results_path + "/hb_acf_results_IF.npy", hb_C_IF)
         # np.save(self.print_results_path + "/hb_acf_results_BULK.npy", hb_C_BULK)
-
-```
