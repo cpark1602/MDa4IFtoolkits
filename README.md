@@ -238,6 +238,7 @@ dim='x'
 bin_size = 0.02
 selection1 = 'name O'; selection2 = 'name O'
 _u_if = kirkwood_gk_interface.Kirkwood_Gk(u_if, box, print_results_path, pbc, bin_size, dim, selection1, selection2, cutoff_IF = [0, 12], cutoff_BULK = [19, 28], start=start_stop_step[0], stop=start_stop_step[1], step=start_stop_step[2])
+Kirkwood_gr = _u_if.run()
 ```
 
 ---
@@ -269,7 +270,6 @@ u_if = mda.Universe(os.path.join(w_path,trj_file_pdb), os.path.join(w_path,trj_f
 start_stop_step = [0, -1, 1] 
 _u_if = conductivity.Conductivity(u_if, 'name '+atom1, 'name '+atom2, print_results_path, Ex, start=start_stop_step[0], stop=start_stop_step[1], step=start_stop_step[2])
 _u_if.run()
-kw_gk_mu_aver_global = _u_if.run()
 ```
 
 ---

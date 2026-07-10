@@ -107,6 +107,7 @@ class InterSlabRDF:
             rdf_frame = density_slab / density_slab_ideal
             self.rdf_slab += rdf_frame
             self.n_frames += 1
+        return
 
     def conclude(self):
         """Averages data over total analyzed frames."""

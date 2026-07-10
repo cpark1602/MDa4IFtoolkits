@@ -1,14 +1,10 @@
 # Copyright (c) 2026 Chanbum Park chanbum.park@theochem.ruhr-uni-bochum.de 
 # Distributed under the terms of the GNU General Public License.
 
-import os
 import time
 import logging
 import warnings
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as pl
-import MDAnalysis as mda
 from MDAnalysis.lib.NeighborSearch import AtomNeighborSearch
 from MDAnalysis.lib import distances
 
@@ -53,8 +49,8 @@ class Kirkwood_Gk:
         
         # --- Output Target Validation ---
         self.print_results_path = print_results_path
-        if not os.path.exists(self.print_results_path):
-            os.makedirs(self.print_results_path)
+        #if not os.path.exists(self.print_results_path):
+        #    os.makedirs(self.print_results_path)
 
     def _get_bonded_hydrogens_dist(self, atom):
         """
@@ -88,7 +84,6 @@ class Kirkwood_Gk:
         and extracts geometric assignments for each target simulation frame.
         """
         self._s1 = self.u.select_atoms(self.selection1)
-        s1_tot_res = len(self._s1.ids)
         self.dict_Oatom_index_to_i = {}
 
         n_frames_i = 0
@@ -170,7 +165,7 @@ class Kirkwood_Gk:
         Splits global trajectory parameters up into standardized block tracking arrays 
         containing frame index boundary indicators spaced by 100-frame chunks.
         """
-        sampling_numbers = 100
+        sampling_numbers = 3 
         tmp = int((self.stop - self.start) / self.step)
         nruns = np.ceil(tmp / sampling_numbers)
 

@@ -34,7 +34,6 @@ class ACF:
         start=None,
         stop=None,
         step=None,
-        nac="IF",
     ):
         """Initializes the ACF analyzer with simulation universes, geometries,
 
@@ -77,8 +76,8 @@ class ACF:
 
         self.hb_acf_results = None
         self.print_results_path = print_results_path
-        if not os.path.exists(self.print_results_path):
-            os.makedirs(self.print_results_path)
+        #if not os.path.exists(self.print_results_path):
+        #    os.makedirs(self.print_results_path)
 
     def _get_bonded_hydrogens_dist(self, atom):
         """Finds covalently bonded hydrogens within a rigid proximity cutoff of
@@ -531,7 +530,7 @@ class ACF:
             windows += sampling_numbers
         return window_list
 
-    def run(self, **kwargs):
+    def run(self):  # , **kwargs
         """Executes the complete window slicing ensemble routine to average the
 
         interfacial and bulk H-bond ACFs.

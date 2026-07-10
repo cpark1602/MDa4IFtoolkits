@@ -39,8 +39,8 @@ class Dangling_bonds:
         # Output directory configuration
         # ---------------------------------------------------------------------
         self.print_results_path = print_results_path
-        if not os.path.exists(self.print_results_path):
-            os.makedirs(self.print_results_path)
+        #if not os.path.exists(self.print_results_path):
+        #    os.makedirs(self.print_results_path)
 
         # ---------------------------------------------------------------------
         # Analysis Cutoffs & Trajectory Slabbing Boundaries
@@ -228,7 +228,7 @@ class Dangling_bonds:
                 ohb = 1
 
         coordO = d.position
-        dcoordO.append(float(0.0))  # No correction applied to the X-direction
+        dcoordO.append(0.0)  # No correction applied to the X-direction
         bcell = self.box[1]         # Box Y length
         ccell = self.box[2]         # Box Z length
         
@@ -239,7 +239,7 @@ class Dangling_bonds:
         elif coordO[1] < float(0):
             dcoordO.append(-m.ceil(abs(coordO[1]) / bcell) * bcell)
         else:
-            dcoordO.append(float(0.0))
+            dcoordO.append(0.0)
             
         # Check and correct Z coordinate boundary crossing
         if coordO[2] > ccell:
@@ -247,7 +247,7 @@ class Dangling_bonds:
         elif coordO[2] <= float(0):
             dcoordO.append(-m.ceil(abs(coordO[2]) / ccell) * ccell)
         else:
-            dcoordO.append(float(0.0))
+            dcoordO.append(0.0)
 
         # Shift Hydrogen 1 positions relative to the corrected Oxygen coordinate grid
         xcoordHnew = xcoordH[0] - dcoordO[0]
@@ -275,7 +275,7 @@ class Dangling_bonds:
                     ohbond_dist_pbc = distances.calc_bonds(
                         coordO, tmp_H_position[hb_iii], box=self.box
                     )  
-                    dcoordH_a.append(float(0.0))
+                    dcoordH_a.append(0.0)
                     bcell = self.box[1]
                     ccell = self.box[2]
                     
@@ -285,7 +285,7 @@ class Dangling_bonds:
                     elif tmp_H_position[hb_iii][1] < float(0):
                         dcoordH_a.append(-m.ceil(abs(tmp_H_position[hb_iii][1]) / bcell) * bcell)
                     else:
-                        dcoordH_a.append(float(0.0))
+                        dcoordH_a.append(0.0)
                         
                     # Check Hydrogen Z-dimension crossing relative to its shifted coordinates
                     if tmp_H_position[hb_iii][2] > ccell:
@@ -293,7 +293,7 @@ class Dangling_bonds:
                     elif tmp_H_position[hb_iii][2] <= float(0):
                         dcoordH_a.append(-m.ceil(abs(tmp_H_position[hb_iii][2]) / ccell) * ccell)
                     else:
-                        dcoordH_a.append(float(0.0))
+                        dcoordH_a.append(0.0)
 
                     # Calculate finalized unwrapped physical coordinates for Hydrogen
                     xcoordHnew = tmp_H_position[hb_iii][0] - dcoordH_a[0]

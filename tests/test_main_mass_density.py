@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings(action="once")
 import logging
 import os
-import MDa4IFtoolkits.mass_density as mass_den
+import MDa4IFtoolkits.mass_density as mass_density
 
 logger = logging.getLogger("MDAnalysis.analysis.hbonds")
 
@@ -36,7 +36,7 @@ def test_mass_density_profile():
     dim = "x"
     bin_size = 0.02
     pbc = True
-    if_q0_nac = mass_den.Mass_density(
+    if_q0_nac = mass_density.Mass_density(
         u_if,
         box,
         print_results_path,
