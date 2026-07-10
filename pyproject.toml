@@ -58,10 +58,10 @@ select = [
     "D",          # pydocstyle
     "PTH"         # pathlib
 ]
-ignore = ["D107", "D301", "F841","UP030","PLR0913","UP032","EM101","EM103","E501","B007","W293","UP009","W291","E702" ]  # ignore specific rules
+ignore = ["D100", "D107", "D301", "F841","UP030","PLR0913","UP032","EM101","EM103","E501","B007","W293","UP009","W291","E702" ]  # ignore specific rules
 
 [tool.ruff.lint.per-file-ignores]
-"acf.py" = ["SIM113", "F401", "PLR0915", "PLR0912", "PLR2004", "PLR5501", "F841"]
+"acf.py" = ["D400", "D401", "D413", "D415", "SIM113", "F401", "PLR0915", "PLR0912", "PLR2004", "PLR5501", "F841"]
 "dipole_angles.py" = ["PLR2004", "F841", "PLR0915", "PLR0912"]
 "kirkwood_gk_interface.py" = ["ARG002", "PLR2004", "SIM113"]
   
