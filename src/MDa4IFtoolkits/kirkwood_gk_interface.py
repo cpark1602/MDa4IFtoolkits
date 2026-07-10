@@ -8,7 +8,7 @@ import numpy as np
 from MDAnalysis.lib.NeighborSearch import AtomNeighborSearch
 from MDAnalysis.lib import distances
 
-import kirkwood_gk as kw_gk
+import MDa4IFtoolkits.kirkwood_gk as kw_gk
 
 # Setup warnings and logging filter configurations to avoid stdout pollution
 warnings.filterwarnings(action='once')
