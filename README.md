@@ -42,7 +42,7 @@ Calculates the spatial mass distribution of different atomic species (e.g., wate
 ```bash
 # System setup
 import MDAnalysis as mda
-import mass_density
+import MDa4IFtoolkits.mass_density as mass_den
 
 u_if = mda.Universe("run-pos.pdb", "run-pos.dcd")
 boxX = 48.57
@@ -56,7 +56,7 @@ print_results_path = "/results/"
 dim = "x"
 bin_size = 0.02
 pbc = True
-_u_if = mass_density.Mass_density(
+_u_if = mass_den.Mass_density(
     u_if,
     box,
     print_results_path,
